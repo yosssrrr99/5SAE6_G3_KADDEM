@@ -1,6 +1,8 @@
 package tn.esprit.spring.kaddem.controllers;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.kaddem.entities.Etudiant;
@@ -12,17 +14,22 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/etudiant")
 public class EtudiantRestController {
+
+    @Autowired
+	Logger logger ;
 	@Autowired
 	IEtudiantService etudiantService;
 	// http://localhost:8089/Kaddem/etudiant/retrieve-all-etudiants
 	@GetMapping("/retrieve-all-etudiants")
 	public List<Etudiant> getEtudiants() {
+        logger.error("something is happend");
 		List<Etudiant> listEtudiants = etudiantService.retrieveAllEtudiants();
 		return listEtudiants;
 	}
 	// http://localhost:8089/Kaddem/etudiant/retrieve-etudiant/8
 	@GetMapping("/retrieve-etudiant/{etudiant-id}")
 	public Etudiant retrieveEtudiant(@PathVariable("etudiant-id") Integer etudiantId) {
+		logger.info("Ceci est un message d'information.");
 		return etudiantService.retrieveEtudiant(etudiantId);
 	}
 
@@ -30,12 +37,14 @@ public class EtudiantRestController {
 	@PostMapping("/add-etudiant")
 	public Etudiant addEtudiant(@RequestBody Etudiant e) {
 		Etudiant etudiant = etudiantService.addEtudiant(e);
+		logger.debug("ajouter étudiants"+etudiant.getNomE());
 		return etudiant;
 	}
 
 	// http://localhost:8089/Kaddem/etudiant/remove-etudiant/1
 	@DeleteMapping("/remove-etudiant/{etudiant-id}")
 	public void removeEtudiant(@PathVariable("etudiant-id") Integer etudiantId) {
+		logger.info("Ceci est un message d'information.");
 		etudiantService.removeEtudiant(etudiantId);
 	}
 
@@ -57,13 +66,14 @@ public class EtudiantRestController {
     @PostMapping("/add-assign-Etudiant/{idContrat}/{idEquipe}")
     @ResponseBody
     public Etudiant addEtudiantWithEquipeAndContract(@RequestBody Etudiant e, @PathVariable("idContrat") Integer idContrat, @PathVariable("idEquipe") Integer idEquipe) {
+		logger.warn("Ceci est un message de warrning.");
         Etudiant etudiant = etudiantService.addAndAssignEtudiantToEquipeAndContract(e,idContrat,idEquipe);
         return etudiant;
     }
 
 	@GetMapping(value = "/getEtudiantsByDepartement/{idDepartement}")
 	public List<Etudiant> getEtudiantsParDepartement(@PathVariable("idDepartement") Integer idDepartement) {
-
+		logger.info("Ceci est un message d'information.");
 		return etudiantService.getEtudiantsByDepartement(idDepartement);
 	}
 

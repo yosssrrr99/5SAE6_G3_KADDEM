@@ -18,8 +18,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 
-@Service
+
 @Slf4j
+@Service
 public class EtudiantServiceImpl implements IEtudiantService{
 	@Autowired
 	EtudiantRepository etudiantRepository ;
@@ -30,7 +31,7 @@ public class EtudiantServiceImpl implements IEtudiantService{
     @Autowired
     DepartementRepository departementRepository;
 	public List<Etudiant> retrieveAllEtudiants(){
-	return (List<Etudiant>) etudiantRepository.findAll();
+		return (List<Etudiant>) etudiantRepository.findAll();
 	}
 
 	public Etudiant addEtudiant (Etudiant e){

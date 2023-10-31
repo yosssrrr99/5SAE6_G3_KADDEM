@@ -50,14 +50,11 @@ public class EquipeServiceImplTest {
     @Transactional
     @Test
    public void testUpdateEquipe() {
-        // Récupérez un étudiant existant
         Equipe existingEquipe= equipeService.retrieveEquipe(2);
 
-        // Modifiez les données de l'étudiant
         existingEquipe.setNiveau(Niveau.SENIOR);
         Equipe updatedEquipe = equipeService.updateEquipe(existingEquipe);
 
-        // Vérifiez que l'étudiant a été correctement mis à jour
         Assert.assertEquals(Niveau.SENIOR, updatedEquipe.getNiveau());
     }
 

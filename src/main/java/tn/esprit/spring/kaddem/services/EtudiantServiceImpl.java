@@ -15,6 +15,7 @@ import tn.esprit.spring.kaddem.repositories.EquipeRepository;
 import tn.esprit.spring.kaddem.repositories.EtudiantRepository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -63,7 +64,7 @@ public class EtudiantServiceImpl implements IEtudiantService{
 		Equipe eq=equipeRepository.findById(idEquipe).orElse(null);
 		c.setEtudiant(e);
 		eq.getEtudiants().add(e);
-return e;
+		return e;
 	}
 
 	public 	List<Etudiant> getEtudiantsByDepartement (Integer idDepartement){

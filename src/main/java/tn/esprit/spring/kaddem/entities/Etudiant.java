@@ -22,7 +22,7 @@ public class Etudiant implements Serializable{
     private String prenomE;
     @Enumerated(EnumType.STRING)
     private Option op;
-    @OneToMany(mappedBy="etudiant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="etudiant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Contrat> Contrats;
     @ManyToOne

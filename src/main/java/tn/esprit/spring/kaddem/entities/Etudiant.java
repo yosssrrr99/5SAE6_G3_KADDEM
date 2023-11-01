@@ -2,6 +2,8 @@ package tn.esprit.spring.kaddem.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +16,13 @@ import javax.persistence.*;
 
 @SuppressWarnings("SpellCheckingInspection")
 @Entity
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Etudiant implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -34,9 +43,6 @@ public class Etudiant implements Serializable{
     @JsonIgnore
   //  private Set<Equipe> equipes ;
     private List<Equipe> equipes ;
-    public Etudiant() {
-        // TODO Auto-generated constructor stub
-    }
 
     public Etudiant(String nomE, String prenomE) {
         this.nomE = nomE;

@@ -16,7 +16,7 @@ import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class EtudiantServiceImplTest {
+ class EtudiantServiceImplTest {
 
     @Autowired
     EtudiantServiceImpl etudiantService;
@@ -54,7 +54,7 @@ public class EtudiantServiceImplTest {
     @Test
     void testUpdateEtudiant() {
 
-        Etudiant existingEtudiant = etudiantService.retrieveEtudiant(2);
+        Etudiant existingEtudiant = etudiantService.retrieveEtudiant(5);
 
 
         existingEtudiant.setOp(Option.SIM);
@@ -119,14 +119,14 @@ public class EtudiantServiceImplTest {
     }
     @Test
     void testretrieveEtudiant(){
-        Etudiant e = etudiantService.retrieveEtudiant(1);
+        Etudiant e = etudiantService.retrieveEtudiant(5);
         Assert.assertNotNull(e);
     }
     @Test
-    public void testremoveEtudiant(){
+     void testremoveEtudiant(){
 
         Etudiant etudiantToRemove = new Etudiant();
-        etudiantToRemove.setIdEtudiant(4);
+        etudiantToRemove.setIdEtudiant(7);
 
 
         etudiantService.removeEtudiant(etudiantToRemove.getIdEtudiant());
@@ -139,7 +139,7 @@ public class EtudiantServiceImplTest {
 
     }
     @Test
-    public void testgetEtudiantsByDepartement(){
+     void testgetEtudiantsByDepartement(){
         List<Etudiant> e = etudiantService.getEtudiantsByDepartement(1);
         Assert.assertNotNull(e);
     }

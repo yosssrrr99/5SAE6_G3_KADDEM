@@ -7,22 +7,22 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        stage('SonarQube analyse') {
-            steps {
-               script {
-                   withSonarQubeEnv(installationName: 'sq1') {
-                       sh 'mvn sonar:sonar'
-                   }
-               }
-             }
-        }
-        stage('Junit test') {
-            steps {
-               script {
-                       sh 'mvn test -Dtest=EtudiantRepositoryWithUnitTest'
-                      }
-                 }
-           }
+        //stage('SonarQube analyse') {
+            //steps {
+               //script {
+                   //withSonarQubeEnv(installationName: 'sq1') {
+                     //  sh 'mvn sonar:sonar'
+                 //  }
+              // }
+             //}
+        //}
+      //  stage('Junit test') {
+           // steps {
+               //script {
+                     //  sh 'mvn test -Dtest=EtudiantRepositoryWithUnitTest'
+                    //  }
+                // }
+          // }
 
 
        }

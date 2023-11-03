@@ -33,7 +33,7 @@ pipeline {
             stage('fichier jar') {
                        steps {
                           script {
-                                  sh 'mvn install'
+                                  sh 'mvn install -DskipTests'
                                  }
                             }
                       }

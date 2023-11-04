@@ -1,5 +1,7 @@
 package tn.esprit.spring.kaddem.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,28 +19,36 @@ import java.util.Set;
 @Slf4j
 @Service
 public class ContratServiceImpl implements IContratService{
+
+	private static final Logger logger = LogManager.getLogger(ContratServiceImpl.class);
 @Autowired
 ContratRepository contratRepository;
 @Autowired
 	EtudiantRepository etudiantRepository;
 	public List<Contrat> retrieveAllContrats(){
+		logger.info("affichage des contrats en cour ..");
 		return (List<Contrat>) contratRepository.findAll();
 	}
 
 	public Contrat updateContrat (Contrat  ce){
+		logger.info("mis a jour de contrat en cour ..");
 		return contratRepository.save(ce);
 	}
 
 	public  Contrat addContrat (Contrat ce){
+		logger.info("ajout de contrat en cour ..");
 		return contratRepository.save(ce);
 	}
 
 	public Contrat retrieveContrat (Integer  idContrat){
+		logger.info("recherche de contrat en cour ..");
 		return contratRepository.findById(idContrat).orElse(null);
 	}
 
 	public  void removeContrat(Integer idContrat){
+		logger.info("recherche de contrat en cour ..");
 		Contrat c=retrieveContrat(idContrat);
+		logger.info("suppression de contrat en cour ..");
 		contratRepository.delete(c);
 	}
 

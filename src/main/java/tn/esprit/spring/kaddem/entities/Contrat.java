@@ -48,6 +48,17 @@ public class Contrat implements Serializable{
         this.archive = archive;
         this.montantContrat = montantContrat;
     }
+    public Contrat(Integer idContrat, Date dateDebutContrat, Date dateFinContrat, Specialite specialite,
+                   Boolean archive, Integer montantContrat,Etudiant etudiant) {
+        super();
+        this.idContrat = idContrat;
+        this.dateDebutContrat = dateDebutContrat;
+        this.dateFinContrat = dateFinContrat;
+        this.specialite = specialite;
+        this.archive = archive;
+        this.montantContrat = montantContrat;
+        this.etudiant = etudiant;
+    }
 
     public Integer getIdContrat() {
         return idContrat;

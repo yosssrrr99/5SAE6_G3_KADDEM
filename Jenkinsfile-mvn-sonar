@@ -72,17 +72,26 @@ pipeline {
                            }
                        }
                    }
-           stage("Build docker image") {
-               steps {
-                   sh 'docker build -t kaddem-docker.jar .'
-               }
-           }
 
-           stage("Push docker image") {
-               steps {
-                   sh 'docker push kaddem-docker.jar'
+
+           stage ("Build docker image") {
+                               steps {
+                                   sh 'docker build -t yosrsahnoun/kaddem-docker  .'
+                                   sh 'docker pull mysql:5.7'
+                               }
+                       }
+                   stage ("Push docker image") {
+                               steps {
+                                   sh 'docker login -u yosrsahnoun -p dockerdocker
+                                   sh 'docker push yosrsahnoun/kaddem-docker'
+                               }
+                       }
+                   stage ("Docker-Compose") {
+                               steps {
+                                   sh 'docker compose up -d'
+                               }
+                       }
                }
-           }
 
 
 

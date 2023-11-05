@@ -82,8 +82,12 @@ pipeline {
                        }
                    stage ("Push docker image") {
                                steps {
-                                   sh 'docker login -u yosrsahnoun -p dockerdocker
+                                   script {
+                                   withCredentials([string(credentialsId: 'docker-ka', variable: 'dockerpwd')]) {
+                                   sh 'docker login -u yosrsahnoun -p ${dockerpwd}'
                                    sh 'docker push yosrsahnoun/kaddem-docker'
+                                   }
+                                   }
                                }
                        }
                    stage ("Docker-Compose") {

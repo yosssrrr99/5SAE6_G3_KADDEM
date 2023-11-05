@@ -83,8 +83,8 @@ pipeline {
                    stage ("Push docker image") {
                                steps {
                                    script {
-                                   withCredentials([string(credentialsId: 'docker-ka', variable: 'dockerpwd')]) {
-                                   sh 'docker login -u yosrsahnoun -p ${dockerpwd}'
+                                   withCredentials([usernamePassword(credentialsId: 'docker-ka', usernameVariable: 'dockeruser', passwordVariable: 'dockerpwd')]) {
+                                   sh "docker login -u ${dockeruser} -p ${dockerpwd}"
                                    sh 'docker push yosrsahnoun/kaddem-docker'
                                    }
                                    }

@@ -12,6 +12,11 @@ pipeline{
                 }
             }
         }
+        stage('Nexus build mvn'){
+            steps{
+                sh 'mvn install deploy '
+            }
+        }
     }
 
 }

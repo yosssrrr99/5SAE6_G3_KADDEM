@@ -16,7 +16,15 @@ pipeline {
                //}
              //}
       // }
-        stage('Junit test') {
+       // stage('Junit test') {
+           // steps {
+              // script {
+                       //sh 'mvn test -Dtest=true'
+                    // }
+               //  }
+          // }
+
+ stage('Deploy') {
             steps {
                script {
                        sh 'mvn test -Dtest=true'

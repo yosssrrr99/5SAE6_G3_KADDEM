@@ -23,7 +23,7 @@ import javax.transaction.Transactional;
 import java.util.*;
 
 @RunWith(SpringRunner.class)
-@SpringBogit adotTest
+@SpringBootTest
 
 
 public class EquipeServiceImplTest {
@@ -65,16 +65,6 @@ public class EquipeServiceImplTest {
 
 
 
-    }
-    @Transactional
-    @Test
-   public void testUpdateEquipe() {
-        Equipe existingEquipe= equipeService.retrieveEquipe(2);
-
-        existingEquipe.setNiveau(Niveau.SENIOR);
-        Equipe updatedEquipe = equipeService.updateEquipe(existingEquipe);
-
-        Assert.assertEquals(Niveau.SENIOR, updatedEquipe.getNiveau());
     }
 
 

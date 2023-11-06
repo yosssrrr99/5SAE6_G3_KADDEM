@@ -5,7 +5,7 @@ pipeline{
         buildDiscarder(logRotator( numToKeepStr: '5'))
     }
     environment {
-            // Define your credentials as environment variables
+            //Define your credentials as environment variables
             USERNAME = credentials('admin')
             PASSWORD = credentials('10062')
         }
@@ -19,9 +19,11 @@ pipeline{
         }
         stage('Nexus build mvn'){
             steps{
-                sh 'mvn install deploy '
+                sh """
+                mvn install deploy
                 echo "Username: \${USERNAME}"
                 echo "Password: \${PASSWORD}"
+                """
             }
         }
     }

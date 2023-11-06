@@ -27,7 +27,7 @@ pipeline {
  stage('Deploy') {
             steps {
                script {
-                       sh 'mvn deply -Dtest=true'
+                       sh 'mvn deploy -Dtest=true'
                      }
                  }
            }

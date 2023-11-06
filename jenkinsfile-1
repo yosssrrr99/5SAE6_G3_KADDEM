@@ -18,7 +18,7 @@ pipeline{
                 script {
                     withCredentials([usernamePassword(credentialsId: 'nexus-cred', usernameVariable: 'admin', passwordVariable: '10062')]) {
                         sh "mvn install -DskipTests "
-                        
+                        sh "mvn deploy"
                     }
                 }
             }

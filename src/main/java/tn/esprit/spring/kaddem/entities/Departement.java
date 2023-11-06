@@ -42,8 +42,7 @@ public class Departement implements Serializable{
     public Integer getIdDepart() {
         return idDepart;
     }
-    public void setIdDepart(Integer idDepart) {
-        this.idDepart = idDepart;
+    public void setIdDepart(Integer idDepart) {this.idDepart = idDepart;
     }
     public String getNomDepart() {
         return nomDepart;

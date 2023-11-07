@@ -20,7 +20,7 @@
                     steps {
                         script {
                             checkout scm
-                        }
+                        }}}
             stage('Scan'){
                 steps{
                     withSonarQubeEnv(installationName: 'sq1' ){

@@ -40,12 +40,10 @@
                      }
 
                stage("Clone code from VCS") {
-                          steps {
-                              script {
-                                  git 'https://github.com/yosssrrr99/5SAE6_G3_KADDEM.git';
-                              }
-                          }
-                      }
+                   steps {
+                       checkout([$class: 'GitSCM', branches: [[name: 'HoussemJrad']], userRemoteConfigs: [[url: 'https://github.com/yosssrrr99/5SAE6_G3_KADDEM.git']]])
+                   }
+               }
 
 
               stage("Publish to Nexus Repository Manager") {

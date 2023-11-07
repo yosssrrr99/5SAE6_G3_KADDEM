@@ -96,6 +96,16 @@
 
                                                }
                                        }
+                  stage ("Push docker image") {
+                                                steps {
+                                                    script {
+                                                    withCredentials([usernamePassword(credentialsId: 'docker-id', usernameVariable: 'houssem04', passwordVariable: '03101919Dec')]) {
+                                                    sh "docker login -u ${dockeruser} -p ${dockerpwd}"
+                                                    sh 'docker push houssemjrad/houssem-docker'
+                                                    }
+                                                    }
+                                                }
+                                        }
 
 
 

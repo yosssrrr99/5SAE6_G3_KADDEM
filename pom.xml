@@ -90,5 +90,11 @@
             </plugin>
         </plugins>
     </build>
-   
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>kaddem nexus repository</name>
+            <url>http://localhost:8081/repository/maven-kaddem/</url>
+        </repository>
+    </distributionManagement>
 </project>

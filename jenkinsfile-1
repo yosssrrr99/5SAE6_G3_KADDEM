@@ -23,8 +23,8 @@ pipeline{
         stage('Nexus build mvn'){
             steps{
                 script {
-                        sh "mvn install -DskipTests "
-                        sh1 "mvn deploy -DskipTests"
+                        sh "mvn install deploy -DskipTests "
+
                 }
             }
         }

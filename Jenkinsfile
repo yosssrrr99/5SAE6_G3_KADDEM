@@ -2,7 +2,7 @@
         agent any
 
           environment {
-                NEXUS_CREDENTIALS = credentials('jenkins-user')
+                NEXUS_CREDENTIALS = credentials('NEXUS_CRED')
                 NEXUS_REPOSITORY = 'maven-central-repository'
 
             }

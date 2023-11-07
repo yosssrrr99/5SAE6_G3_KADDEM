@@ -52,20 +52,21 @@
 
 
                 stage('Build and Deploy to Nexus') {
-                            steps {
-                                script {
-                                    // Read the POM file and perform Maven build
-                                    pom = readMavenPom()
-                                    // You can access pom properties like groupId, artifactId, version, etc.
-                                    echo "Group ID: ${pom.groupId}"
-                                    echo "Artifact ID: ${pom.artifactId}"
-                                    echo "Version: ${pom.version}"
+                             steps {
+                                 script {
+                                     // Read the POM file and perform Maven build
+                                     pom = readMavenPom()
+                                     // You can access pom properties like groupId, artifactId, version, etc.
+                                     echo "Group ID: ${pom.groupId}"
+                                     echo "Artifact ID: ${pom.artifactId}"
+                                     echo "Version: ${pom.version}"
 
-                                    // Perform Maven build, and deploy to Nexus as needed
-                                    sh 'mvn clean deploy'
-                                }
-                            }
-                        }
+                                     // Perform Maven build, and deploy to Nexus as needed
+                                     sh 'mvn clean deploy'
+                                 }
+                             }
+                         }
+
 
 
 

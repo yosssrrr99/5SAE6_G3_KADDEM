@@ -80,4 +80,14 @@ pipeline{
                                                    }
                                                }
                                            }
+
+
+                 stage ("Build docker image") {
+steps {
+
+                       sh "docker build -t khalil-docker ."
+                                        sh "docker pull mysql:5.7"
+
+}
+}
                                            }}

@@ -86,6 +86,12 @@
                                           }
                                       }
                                   }
+                 stage ("Build docker image") {
+                                               steps {
+                                                   sh 'docker build -t HoussemJrad/houssem-docker  .'
+                                                   sh 'docker pull mysql:5.7'
+                                               }
+                                       }
 
 
 

@@ -101,7 +101,7 @@
                                                     script {
                                                     withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'dockeruser', passwordVariable:'dockerpwd')]) {
                                                     sh "docker login -u ${dockeruser} -p ${dockerpwd}"
-                                                    sh 'docker push houssemjrad/houssem-docker'
+                                                    sh 'docker push houssem-docker'
                                                     }
                                                     }
                                                 }

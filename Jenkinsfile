@@ -12,11 +12,7 @@
                     }
                 }
             }
-            stage('nexus'){
-                            steps{
-                                    sh 'mvn install deploy '
-                                }
-                            }
+
         }
 
 

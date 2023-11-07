@@ -23,6 +23,13 @@
                     }
                 }
             }
+             stage(' jar') {
+                                   steps {
+                                      script {
+                                              sh 'mvn install -DskipTests'
+                                             }
+                                        }
+                                  }
 
 
               stage("Nexus") {

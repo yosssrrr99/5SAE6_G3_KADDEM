@@ -1,22 +1,20 @@
-version: "3.8"
-services:
-  db-mysql:
-    image: mysql:5.7
-    restart: unless-stopped
-    ports:
-      - 3307:3306
-    volumes:
-      - dbVolume:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
-  backend:
-    image: houssem-docker
-    restart: unless-stopped
-    ports:
-      - 8089:8089
-    depends_on:
-      - db-mysql
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/kaddem\db?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
+db-mysql:
+  image: mysql:5.6
+  container_name: db-mysql
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+  ports:
+    - "3307:3306"
+  restart: unless-stopped
+
+kaddem:
+  image: houssem-docker
+  restart: unless-stopped
+  ports:
+    - 8089:8089
+  depends_on:
+    - db-mysql
+  environment:
+    - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/kaddem\db?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    - SPRING_DATASOURCE_USERNAME=root
+    - SPRING_DATASOURCE_PASSWORD=root

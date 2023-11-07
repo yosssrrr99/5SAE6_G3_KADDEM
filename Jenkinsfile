@@ -88,8 +88,10 @@
                                   }
                  stage ("Build docker image") {
                                                steps {
-                                                   sh 'sudo docker build -t HoussemJrad/houssem-docker  .'
-                                                   sh 'sudo docker pull mysql:5.7'
+                                                   def rootPassword = 'vagrant'
+
+                                                   sh ' sh "echo '${rootPassword}' |sudo docker build -t HoussemJrad/houssem-docker  .'
+                                                   sh ' sh "echo '${rootPassword}' |sudo docker pull mysql:5.7'
                                                }
                                        }
 

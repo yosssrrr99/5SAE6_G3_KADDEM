@@ -96,7 +96,7 @@
 
                                                }
                                        }
-                  stage ("Push docker image") {
+                  stage (" image doc") {
                                                 steps {
                                                     script {
                                                     withCredentials([usernamePassword(credentialsId: 'docker-id', usernameVariable: 'houssem04', passwordVariable: '03101919Dec')]) {

@@ -19,12 +19,17 @@
                     }
                 }
             }
+              stage('Build') {
+                        steps {
+                            sh 'mvn clean package'
+                        }
+                    }
 
              stage('Deploy to Nexus') {
                         steps {
                             script {
                                 def mavenCmd = tool name: 'Maven', type: 'maven'
-                                sh "${mavenCmd}/bin/mvn deploy -s settings.xml -Dmaven.repo.local=${WORKSPACE}/.m2/repository -DaltDeploymentRepository=nexus::default::http://192.168.33.10:8081/repository/${NEXUS_REPOSITORY}/ -DskipTests"
+                                sh " mvn deploy -s settings.xml -D maven.repo.local=${WORKSPACE}/.m2/repository -DaltDeploymentRepository=nexus::default::http://192.168.33.10:8081/repository/${NEXUS_REPOSITORY}/ -D skipTests"
                             }
                         }
                     }

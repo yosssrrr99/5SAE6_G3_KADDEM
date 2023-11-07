@@ -1,21 +1,22 @@
 pipeline{
     agent any
+    environment {
+
+                              NEXUS_VERSION = "nexus3"
+                              NEXUS_PROTOCOL = "http"
+                              NEXUS_URL = "192.168.33.10:8081"
+                              NEXUS_CREDENTIAL_ID  ='nexus_id'
+                              NEXUS_REPOSITORY = 'kaddem_nexus'
+                          }
 
     options{
         buildDiscarder(logRotator( numToKeepStr: '5'))
     }
 
     stages{
-      agent any
 
-      environment {
 
-                          NEXUS_VERSION = "nexus3"
-                          NEXUS_PROTOCOL = "http"
-                          NEXUS_URL = "192.168.33.10:8081"
-                          NEXUS_CREDENTIAL_ID  ='nexus_id'
-                          NEXUS_REPOSITORY = 'kaddem_nexus'
-                      }
+
         stage('Scan'){
             steps{
                 withSonarQubeEnv(installationName: 'sq1' ){

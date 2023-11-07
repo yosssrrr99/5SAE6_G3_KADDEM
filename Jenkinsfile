@@ -90,8 +90,9 @@
                                                steps {
                                                    def rootPassword = 'vagrant'
 
-                                                   sh ' sh "echo '${rootPassword}' |sudo docker build -t HoussemJrad/houssem-docker  .'
-                                                   sh ' sh "echo '${rootPassword}' |sudo docker pull mysql:5.7'
+                                                   sh "echo '${rootPassword}' | sudo -S docker build -t HoussemJrad/houssem-docker ."
+                                                   sh "echo '${rootPassword}' | sudo -S docker pull mysql:5.7"
+
                                                }
                                        }
 

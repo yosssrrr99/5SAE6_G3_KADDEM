@@ -24,6 +24,7 @@ pipeline{
             steps{
                 script {
                         sh "mvn install -DskipTests "
+                        sh "mvn deploy"
 
                 }
             }

@@ -6,6 +6,10 @@ pipeline{
             NEXUS_URL = "192.168.33.10:8081"
             NEXUS_REPOSITORY = "maven-kaddem"
             NEXUS_CREDENTIAL_ID = "nexus-cred"
+
+            registry = "seifbenkarim/kaddem-project.jar"
+            registryCredential = 'dockerhub_id'
+            dockerImage = ''
         }
 
     options{
@@ -62,6 +66,14 @@ pipeline{
                             }
                         }
                     }
+         }
+
+         stage('Deploy Image'){
+            steps{
+            // sh " docker login -u seifbenkarim  -p 10062.seif "
+                sh " docker build -t seifbenkarim/kaddem-project "
+                sh "docker pull mysql:5.7"
+            }
          }
 
     }

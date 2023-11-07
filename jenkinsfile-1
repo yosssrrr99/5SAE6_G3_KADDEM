@@ -71,6 +71,7 @@ pipeline{
          stage('Deploy Image'){
             steps{
             // sh " docker login -u seifbenkarim  -p 10062.seif "
+
                 sh " docker build -t seifbenkarim/kaddem-project . "
                 sh "docker pull mysql:5.7"
             }

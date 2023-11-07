@@ -24,13 +24,13 @@ pipeline {
                //  }
           // }
 
- stage('Deploy') {
-            steps {
-               script {
-                       sh 'mvn deploy -Dtest=true'
-                     }
-                 }
-           }
+// stage('Deploy') {
+  //          steps {
+   //            script {
+     //                  sh 'mvn deploy -Dtest=true'
+       //              }
+         //}
+           //}
     stage('Login') {
              steps {
                  script {

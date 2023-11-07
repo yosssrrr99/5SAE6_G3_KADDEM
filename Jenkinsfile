@@ -8,6 +8,8 @@
                 NEXUS_URL = "192.168.33.10:8081"
                 NEXUS_CREDENTIAL_ID  ='NEXUS_CRED'
                 NEXUS_REPOSITORY = 'maven-central-repository'
+                rootPassword = 'vagrant'
+
 
             }
 
@@ -88,7 +90,6 @@
                                   }
                  stage ("Build docker image") {
                                                steps {
-                                                   def rootPassword = 'vagrant'
 
                                                    sh "echo '${rootPassword}' | sudo -S docker build -t HoussemJrad/houssem-docker ."
                                                    sh "echo '${rootPassword}' | sudo -S docker pull mysql:5.7"

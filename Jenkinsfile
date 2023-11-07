@@ -39,6 +39,15 @@
                          }
                      }
 
+               stage("Clone code from VCS") {
+                          steps {
+                              script {
+                                  branches: [[name: 'HoussemJrad']],
+                                  git 'https://github.com/yosssrrr99/5SAE6_G3_KADDEM.git';
+                              }
+                          }
+                      }
+
 
               stage("Publish to Nexus Repository Manager") {
                           steps {

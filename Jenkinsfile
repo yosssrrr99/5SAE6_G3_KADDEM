@@ -6,7 +6,7 @@
                 NEXUS_VERSION = "nexus3"
                 NEXUS_PROTOCOL = "http"
                 NEXUS_URL = "192.168.33.10:8081"
-                NEXUS_CREDENTIALS = credentials('NEXUS_CRED')
+                NEXUS_CREDENTIAL_ID  ='NEXUS_CRED'
                 NEXUS_REPOSITORY = 'maven-central-repository'
 
             }

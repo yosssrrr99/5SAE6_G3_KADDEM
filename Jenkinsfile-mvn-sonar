@@ -34,7 +34,8 @@ pipeline {
     stage('Login') {
              steps {
                  script {
-                     sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
+                     withCredentials([usernamePassword(credentialsId: 'bd8f8541-6393-45c3-913d-da6aad2a47b5', usernameVariable: 'eya20', passwordVariable: 'Qsdfghjklm123')]) {
+                        sh "echo \${PASSWORD} | docker login --username \${USERNAME} --password-stdin"
                  }
              }
          }

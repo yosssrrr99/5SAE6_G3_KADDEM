@@ -80,7 +80,7 @@ pipeline {
                                    sh 'docker compose down'
                                    sh 'docker rmi -f yosrsahnoun/kaddem-docker'
                                    sh 'docker build -t yosrsahnoun/kaddem-docker  .'
-                                   sh 'docker pull mysql:5.7'
+
                                }
                        }
                    stage ("Push docker image") {

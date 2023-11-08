@@ -95,8 +95,8 @@ steps {
                                                     script {
                                                     withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'dockeruser', passwordVariable:'dockerpwd')]) {
                                                     sh "docker login -u ${dockeruser} -p ${dockerpwd}"
-                                                     sh "docker tag houssem-docker ${dockeruser}/houssem-docker:latest"
-                                                      sh "docker push ${dockeruser}/houssem-docker:latest"
+                                                     sh "docker tag khalil-docker ${dockeruser}/khalil-docker:latest"
+                                                      sh "docker push ${dockeruser}/khalil-docker:latest"
 
                                                     }
                                                     }

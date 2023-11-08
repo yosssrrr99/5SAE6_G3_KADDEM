@@ -83,7 +83,7 @@ pipeline {
                                    sh 'docker pull mysql:5.7'
                                }
                        }
-                 /*  stage ("Push docker image") {
+                   stage ("Push docker image") {
                                steps {
                                    script {
                                    withCredentials([usernamePassword(credentialsId: 'docker-ka', usernameVariable: 'dockeruser', passwordVariable: 'dockerpwd')]) {
@@ -92,7 +92,7 @@ pipeline {
                                    }
                                    }
                                }
-                       }*/
+                       }
                    stage ("Docker-Compose") {
                                steps {
                                    sh 'docker compose up -d'

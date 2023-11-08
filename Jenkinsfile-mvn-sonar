@@ -33,12 +33,13 @@ pipeline {
            //}
     stage('Login') {
              steps {
-                 script {
+                
                      script {
                      sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
                  }
-             }
+             
          }
+}
              stage('Build et Push Docker Image') {
      steps {
          script {

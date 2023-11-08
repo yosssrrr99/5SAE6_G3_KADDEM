@@ -98,6 +98,17 @@ pipeline {
                                    sh 'docker compose up -d'
                                }
                        }
+                       stage('Stage Sending Mail') {
+                                     steps {
+                                       mail bcc: '',body: '''aaaaa''',cc: '', from: '', replyTo: '', subject: 'Trigger mailling test n°', to: 'belhsenbachouch97@gmail.com'
+
+
+
+                                      }
+                               }
+
+
+                           }
 
 
 

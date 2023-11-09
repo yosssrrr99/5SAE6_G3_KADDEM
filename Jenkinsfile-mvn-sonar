@@ -31,41 +31,61 @@ pipeline {
        //              }
          //}
            //}
-    stage('Login') {
-             steps {
-                
-                     script {
-                     sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
-                 }
+   // stage('Login') {
+     //        steps {
+       //         
+         //            script {
+           //          sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
+             //    }
              
-         }
-}
-             stage('Build et Push Docker Image') {
-     steps {
-         script {
+         //}
+//}
+  //           stage('Build et Push Docker Image') {
+    // steps {
+      //   script {
              // Construire l'image Docker
-             sh 'docker build -t eya20/kaddem:latest .'
-         }
-         }
-                 }
-         stage('Push vers DockerHub') {
-     steps {
-         script {
-             sh 'docker push eya20/kaddem:latest'
-         }
-    }
- }
-          stage('Docker compose') {
-     steps {
-         script {
+        //     sh 'docker build -t eya20/kaddem:latest .'
+         //}
+         //}
+           //      }
+         //stage('Push vers DockerHub') {
+     //steps {
+       //  script {
+         //    sh 'docker push eya20/kaddem:latest'
+         //}
+    //}
+ //}
+   //       stage('Docker compose') {
+     //steps {
+       //  script {
            
-             sh 'docker compose up -d'
-         }
-         }
+         //    sh 'docker compose up -d'
+         //}
+         //}
    
 
 
-           }
+           //}
+ post {
+        always {
+            // Étape exécutée toujours, qu'importe le résultat des étapes précédentes.
+
+            // Exemple d'envoi d'un e-mail de notification
+            emailext subject: 'Rapport de construction Jenkins',
+                      body: 'La construction Jenkins a été achevée.',
+                      to: 'eya.dhamna@esprit.tn'
+        }
+        
+        success {
+            // Étape exécutée uniquement en cas de succès du pipeline.
+            echo 'Le pipeline a réussi!'
+        }
+
+        failure {
+            // Étape exécutée uniquement en cas d'échec du pipeline.
+            echo 'Le pipeline a échoué. Des mesures correctives sont nécessaires.'
+        }
+    }
 
 
        }

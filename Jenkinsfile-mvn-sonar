@@ -24,48 +24,48 @@ pipeline {
                //  }
           // }
 
-// stage('Deploy') {
-  //          steps {
-   //            script {
-     //                  sh 'mvn deploy -Dtest=true'
-       //              }
-         //}
-           //}
-   // stage('Login') {
-     //        steps {
-       //         
-         //            script {
-           //          sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
-             //    }
+ stage('Deploy') {
+            steps {
+               script {
+                       sh 'mvn deploy -Dtest=true'
+                    }
+         }
+           }
+    stage('Login') {
+             steps {
+                
+                     script {
+                     sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
+                 }
              
-         //}
-//}
-  //           stage('Build et Push Docker Image') {
-    // steps {
-      //   script {
-             // Construire l'image Docker
-        //     sh 'docker build -t eya20/kaddem:latest .'
-         //}
-         //}
-           //      }
-         //stage('Push vers DockerHub') {
-     //steps {
-       //  script {
-         //    sh 'docker push eya20/kaddem:latest'
-         //}
-    //}
- //}
-   //       stage('Docker compose') {
-     //steps {
-       //  script {
+         }
+}
+            stage('Build et Push Docker Image') {
+     steps {
+         script {
+              Construire l'image Docker
+             sh 'docker build -t eya20/kaddem:latest .'
+         }
+         }
+                 }
+         stage('Push vers DockerHub') {
+     steps {
+        script {
+             sh 'docker push eya20/kaddem:latest'
+         }
+    }
+ }
+          stage('Docker compose') {
+     steps {
+         script {
            
-         //    sh 'docker compose up -d'
-         //}
-         //}
+             sh 'docker compose up -d'
+         }
+         }
    
 
 
-           //}
+           }
 }
  post {
         always {

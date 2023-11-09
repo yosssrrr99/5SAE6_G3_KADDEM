@@ -8,6 +8,14 @@ pipeline {
             NEXUS_CREDENTIAL_ID = "nexus-cred"
     }
     stages {
+            stage('Git Checkout') {
+                steps {
+
+                    checkout scm
+                }
+            }
+
+    stages {
         stage('Nettoyage et compilation Maven') {
             steps {
                 // Cette étape va nettoyer et compiler le projet avec Maven

@@ -16,13 +16,13 @@ pipeline {
                //}
              //}
       // }
-       // stage('Junit test') {
-           // steps {
-              // script {
-                       //sh 'mvn test -Dtest=true'
-                    // }
-               //  }
-          // }
+        stage('Junit test') {
+            steps {
+               script {
+                       sh 'mvn test -Dtest=true'
+                     }
+                 }
+           }
 
  stage('Deploy') {
             steps {

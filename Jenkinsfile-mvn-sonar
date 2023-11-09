@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+
+stage('Declarative: Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Nettoyage et compilation Maven') {
             steps {
                 // Cette étape va nettoyer et compiler le projet avec Maven
@@ -17,6 +23,9 @@ pipeline {
                }
              }
        }
+
+
+
         stage('Junit test') {
             steps {
                script {

@@ -7,6 +7,12 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+stage {
+stage('Checkout') {
+            steps {
+                checkout scm
+            }
+}
         //stage('SonarQube analyse') {
             //steps {
              // script {

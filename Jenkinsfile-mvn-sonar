@@ -1,103 +1,83 @@
-pipeline {
+
+
+
+       pipeline {
     agent any
     stages {
-
-stage('Declarative: Checkout SCM') {
+        stage('Nettoyage et compilation Maven') {
+            steps {
+                // Cette étape va nettoyer et compiler le projet avec Maven
+                sh 'mvn clean compile'
+            }
+        }
+        stage('Declarative: Checkout SCM') {
             steps {
                 checkout scm
             }
         }
-        stage('Nettoyage et compilation Maven') {
+           stage('Junit test') {
+           steps {
+               script {
+                       sh 'mvn test'
+                      }
+                }
+           }
+         stage('Nettoyage et install ') {
             steps {
                 // Cette étape va nettoyer et compiler le projet avec Maven
                 sh 'mvn clean install'
             }
         }
-
         stage('SonarQube analyse') {
             steps {
-              script {
-                   withSonarQubeEnv(installationName: 'sq1') {
-                      sh 'mvn sonar:sonar'
-                   }
-               }
-             }
-       }
-
-
-
-        stage('Junit test') {
-            steps {
                script {
-                       sh 'mvn test -Dtest=true'
-                     }
-                 }
-           }
-
-stage('Deploy') {
-          steps {
-              script {
-                     sh 'mvn deploy -Dtest=true'
-                   }
+                    withSonarQubeEnv(installationName: 'sq1') {
+                        sh 'mvn sonar:sonar'
+                    }
+                }
+              }
          }
+     
+       stage('Build and Deploy nexus') {
+            steps {
+                script {
+                    sh 'mvn clean deploy -DskipTests=true'
+                }
            }
-    stage('Login') {
-             steps {
-                
-                     script {
-                     sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
-                 }
-             
-         }
-}
+        }
+          stage('Login') {
+            steps {
+                script {
+                    sh 'echo "Qsdfghjklm123" |  docker login --username eya20  --password-stdin'
+                }
+            }
+        }
             stage('Build et Push Docker Image') {
-     steps {
-         script {
-             // Construire l'image Docker
-             sh 'docker build -t eya20/kaddem:latest .'
-         }
-         }
-                 }
-         stage('Push vers DockerHub') {
-     steps {
+    steps {
         script {
-             sh 'docker push eya20/kaddem:latest'
-         }
+            // Construire l'image Docker
+            sh 'docker build -t eya20/kaddem:latest .'
+        }
+        }
+                }
+         stage('Push vers DockerHub') {
+    steps {
+        script {
+            sh 'docker push eya20/kaddem:latest'
+        }
     }
- }
+}
           stage('Docker compose') {
-     steps {
-         script {
+    steps {
+        script {
            
-             sh 'docker compose up -d'
-         }
-         }
+            sh 'sudo docker compose up'
+        }
+        }
    
 
 
-           }
-}
-// post {
-  //      always {
-            // Étape exécutée toujours, qu'importe le résultat des étapes précédentes.
-
-            // Exemple d'envoi d'un e-mail de notification
-     //       emailext subject: 'Rapport de construction Jenkins',
-      //                body: 'La construction Jenkins a été achevée.',
-      //                to: 'eya.dhamna@esprit.tn'
-      //  }
-        
-      //  success {
-       //     // Étape exécutée uniquement en cas de succès du pipeline.
-        //    echo 'Le pipeline a réussi!'
-       // }
-
-      //  failure {
-            // Étape exécutée uniquement en cas d'échec du pipeline.
-       //     echo 'Le pipeline a échoué. Des mesures correctives sont nécessaires.'
-      //  }
- //   }
-
-
+    //       }
        }
+   }
    

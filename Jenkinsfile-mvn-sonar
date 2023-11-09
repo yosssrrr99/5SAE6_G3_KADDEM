@@ -66,6 +66,7 @@ pipeline {
 
 
            //}
+}
  post {
         always {
             // Étape exécutée toujours, qu'importe le résultat des étapes précédentes.
@@ -89,4 +90,4 @@ pipeline {
 
 
        }
-   }
+   

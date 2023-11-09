@@ -67,26 +67,26 @@ pipeline {
 
            }
 }
- post {
-        always {
+// post {
+  //      always {
             // Étape exécutée toujours, qu'importe le résultat des étapes précédentes.
 
             // Exemple d'envoi d'un e-mail de notification
-            emailext subject: 'Rapport de construction Jenkins',
-                      body: 'La construction Jenkins a été achevée.',
-                      to: 'eya.dhamna@esprit.tn'
-        }
+     //       emailext subject: 'Rapport de construction Jenkins',
+      //                body: 'La construction Jenkins a été achevée.',
+      //                to: 'eya.dhamna@esprit.tn'
+      //  }
         
-        success {
-            // Étape exécutée uniquement en cas de succès du pipeline.
-            echo 'Le pipeline a réussi!'
-        }
+      //  success {
+       //     // Étape exécutée uniquement en cas de succès du pipeline.
+        //    echo 'Le pipeline a réussi!'
+       // }
 
-        failure {
+      //  failure {
             // Étape exécutée uniquement en cas d'échec du pipeline.
-            echo 'Le pipeline a échoué. Des mesures correctives sont nécessaires.'
-        }
-    }
+       //     echo 'Le pipeline a échoué. Des mesures correctives sont nécessaires.'
+      //  }
+ //   }
 
 
        }

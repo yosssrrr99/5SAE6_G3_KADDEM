@@ -100,7 +100,7 @@ pipeline {
                        }
                        stage('Stage Sending Mail') {
                                      steps {
-                                       mail bcc: '',body: '''this is a pipline url: http://192.168.33.10:8080/job/Pipeline-tests-SAE6-Kaddem-NVM-Sonnar/''',cc: '', from: '', replyTo: '', subject: 'Trigger mailling test n°', to: 'houssem.jrad@esprit.tn'
+                                       mail bcc: '',body: '''this is a pipline url: http://192.168.33.10:8080/job/Pipeline-tests-SAE6-Kaddem-NVM-Sonnar/''',cc: '', from: '', replyTo: '', subject: 'Jenkins Pipline', to: 'houssem.jrad@esprit.tn'
 
 
 

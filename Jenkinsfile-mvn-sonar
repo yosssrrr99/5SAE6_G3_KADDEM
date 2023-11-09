@@ -13,6 +13,7 @@ stage('Checkout') {
                 checkout scm
             }
 }
+}
         //stage('SonarQube analyse') {
             //steps {
              // script {

@@ -14,7 +14,7 @@ pipeline {
                     checkout scm
                 }
             }
-
+}
     stages {
         stage('Nettoyage et compilation Maven') {
             steps {
